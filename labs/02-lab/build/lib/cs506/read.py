@@ -7,10 +7,14 @@ def read_csv(csv_file_path):
     """
     list = []
     with open(csv_file_path, newline='') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        reader = csv.reader(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_NONNUMERIC)
         for row in reader:
-            list += [[int(row[0]), int(row[1])]]
-    print(list)
+            toAdd = []
+            for item in row:
+                toAdd += [item]
+            list += [toAdd]
+            # list += [[int(row[0]), int(row[1])]]
+    # print(list)
     return list
 
-read_csv("dataset_1.csv")
+# read_csv("dataset_1.csv")
